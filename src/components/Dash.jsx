@@ -4,6 +4,7 @@ import avatarDummy from '../assets/images/dummy-avatar.jpg'
 
 
 function Dash() {
+
     return (
         <div>
             <div id="wrapper">
