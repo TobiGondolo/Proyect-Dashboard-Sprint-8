@@ -12,7 +12,7 @@ export const LastProduct = (props) => {
                 </div>
                 <div className="card-body">
                     <div className="text-center">
-                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: "25rem" }} src={"http://localhost:3000/img/products/" + props.imagen} alt="image dummy" />
+                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: "25rem" }} src={process.env.REACT_APP_PRODUCT_IMAGE_URL + "/img/products/" + props.imagen} alt="image dummy" />
                     </div>
                     <div className="lastProduct-description-container">
                         <h1>{props.nombre}</h1>
