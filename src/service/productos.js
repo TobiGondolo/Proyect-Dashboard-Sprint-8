@@ -1,8 +1,10 @@
-const getProducto = (productoId) => {
+import { fetchRequest } from "../utils/request"
 
-}
+// const getProducto = (productoId) => {
+
+// }
 
 
-const getProductos = () => {
-
+export const getProductos = async () => {
+    return await fetchRequest("/products")
 }

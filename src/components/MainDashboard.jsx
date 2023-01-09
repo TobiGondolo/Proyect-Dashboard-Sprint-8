@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import imagenDummy from '../assets/images/product_dummy.svg'
+import { getProductos } from "../service/productos";
+import { getUsers } from "../service/usuarios";
+import { fetchRequest } from "../utils/request";
 import { DetailCard } from "./DetailCard";
 
 
 export const MainDashboard = () => {
+    const [usuariosTotales, setUsuariosTotales] = useState();
+    const [productsInDb, setProductsInDb] = useState();
+    const [amountInProducts, setAmaountInProducts] = useState();
+    const loadScreen = async function(){
+    const respuesta = await getUsers()
+    console.log(respuesta);
+    setUsuariosTotales(respuesta.count)
+    const respuesta2 = await getProductos()
+    console.log(respuesta2);
+    setProductsInDb(respuesta2.count)    
+    }
+    useEffect(function(){
+        loadScreen()
+    },[])
+
+
     return (
         <div>
-            <div class="container-fluid">
+            <div className="container-fluid">
                 {/* <!-- Page Heading --> */}
                 <div className="d-sm-flex align-items-center justify-content-between mb-4" >
                     <h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
@@ -16,44 +35,9 @@ export const MainDashboard = () => {
                 <div className="row" >
 
                     {/* <!-- Amount of Products in DB --> */}
-                    <DetailCard type= "verde"/>
-                
-
-                {/* <!-- $$$ of all products in DB --> */}
-                <div className="col-md-4 mb-4" >
-                    <div className="card border-left-success shadow h-100 py-2">
-                        <div className="card-body">
-                            <div className="row no-gutters align-items-center">
-                                <div className="col mr-2">
-                                    <div className="text-xs font-weight-bold text-success text-uppercase mb-1"> Amount in products</div>
-                                    <div className="h5 mb-0 font-weight-bold text-gray-800">$546.456</div>
-                                </div>
-                                <div className="col-auto">
-                                    <i className="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* <!-- Amount of users in DB --> */}
-                <div className="col-md-4 mb-4" >
-                    <div className="card border-left-warning shadow h-100 py-2">
-                        <div className="card-body">
-                            <div className="row no-gutters align-items-center">
-                                <div className="col mr-2">
-                                    <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Users quantity
-                                    </div>
-                                    <div className="h5 mb-0 font-weight-bold text-gray-800">38</div>
-                                </div>
-                                <div className="col-auto">
-                                    <i className="fas fa-user-check fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
+                    <DetailCard type= "azul" title="PRODUCTS IN DATABASE" number= {productsInDb}/>
+                    <DetailCard type= "verde" title="AMOUNT IN PRODUCTS" number= {usuariosTotales}/>
+                    <DetailCard type= "amarillo" title="USERS QUANTITY" number= {usuariosTotales}/>
 
 
                 {/* <!-- Content Row --> */}
@@ -133,6 +117,7 @@ export const MainDashboard = () => {
                 {/* <!-- /.container-fluid --> */}
             </div>
             {/* <!-- End of Main Content --> */}
+            </div>
         </div>
     )
 }
