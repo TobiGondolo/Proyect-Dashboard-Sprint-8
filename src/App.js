@@ -10,8 +10,8 @@ function App() {
   }
 
   return (
-    <button onClick={handleClickPrueba}>PRUEBA</button>
-    // <Dash/>
+    // <button onClick={handleClickPrueba}>PRUEBA</button>
+    <Dash/>
   );
 }
 
