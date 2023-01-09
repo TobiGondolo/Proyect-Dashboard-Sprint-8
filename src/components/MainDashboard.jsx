@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+
+import "../styles/components/mainDashboard.css"
+
 import { getCategorias } from "../service/categorias";
 import { getLastProduct, getProductos } from "../service/productos";
 import { getUsers } from "../service/usuarios";
@@ -6,6 +9,7 @@ import { fetchRequest } from "../utils/request";
 import { CategoriesDetail } from "./CategoriesDetail";
 import { DetailCard } from "./DetailCard";
 import { LastProduct } from "./LastProduct";
+import { Spinner } from "./Spinner";
 
 
 export const MainDashboard = () => {
@@ -25,11 +29,6 @@ export const MainDashboard = () => {
 
         setLoading(true)
         const arrPromises = await Promise.all([arrUsersPromise, arrProductosPromise, lastProduct, arrCategoriesPromise])
-
-        // await setTimeout(() => {
-        //     setLoading(false)
-        // }, 2000)
-
         setLoading(false)
 
         setUsuariosTotales(arrPromises[0].count)
@@ -49,10 +48,9 @@ export const MainDashboard = () => {
         loadScreen()
     }, [])
 
-
     return (
-        <div>
-            <div className="container-fluid">
+        <div className="flex-grow-1">
+            <div className="container-fluid flex-grow-1">
                 <div className="d-sm-flex align-items-center justify-content-between mb-4" >
                     <h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
                 </div>
@@ -96,8 +94,8 @@ export const MainDashboard = () => {
                         </div>
                     </div>
                     :
-                    <div>
-                        CARGANDO...
+                    <div className="mainDashboard-loading-container flex-grow-1">
+                        <Spinner mensaje="Cargando metricas" />
                     </div>
                 }
             </div>

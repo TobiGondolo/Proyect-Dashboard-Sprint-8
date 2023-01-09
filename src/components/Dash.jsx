@@ -13,27 +13,25 @@ function Dash() {
                 <Sidebar />
 
                 {/* <!-- Content Wrapper --> */}
-                <div id="content-wrapper" className="d-flex flex-column">
+                <div id="content-wrapper" className="flex-grow-1">
 
                     {/* <!-- Main Content --> */}
-                    <div id="content">
+                    <div id="content" className="content flex-grow-1">
                         <Topbar />
 
                         {/* <!-- Begin Page Content --> */}
-                        
-                            <MainDashboard />
+                        <MainDashboard />
 
-                                
-                            {/* <!-- Footer --> */}
-                                <Footer />
+                        {/* <!-- Footer --> */}
+                        <Footer />
 
-                        </div>
-                        {/* <!-- End of Content Wrapper --> */}
                     </div>
+                    {/* <!-- End of Content Wrapper --> */}
                 </div>
-                {/* <!-- End of Page Wrapper --> */}
             </div>
-        
+            {/* <!-- End of Page Wrapper --> */}
+        </div>
+
     );
 }
 
