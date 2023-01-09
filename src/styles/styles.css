@@ -1,0 +1,15 @@
+@keyframes showOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.show-opacity {
+    animation-name: showOpacity;
+    animation-duration: 1.3s;
+}
