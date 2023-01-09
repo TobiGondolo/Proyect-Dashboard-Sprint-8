@@ -16,7 +16,12 @@ export const MainDashboard = () => {
     setUsuariosTotales(respuesta.count)
     const respuesta2 = await getProductos()
     console.log(respuesta2);
-    setProductsInDb(respuesta2.count)    
+    setProductsInDb(respuesta2.count)  
+    let sumatoria = 0;
+    respuesta2.products.forEach(producto => {
+    sumatoria = sumatoria + Number(producto.precio);
+    });
+    setAmaountInProducts(sumatoria)
     }
     useEffect(function(){
         loadScreen()
@@ -36,7 +41,7 @@ export const MainDashboard = () => {
 
                     {/* <!-- Amount of Products in DB --> */}
                     <DetailCard type= "azul" title="PRODUCTS IN DATABASE" number= {productsInDb}/>
-                    <DetailCard type= "verde" title="AMOUNT IN PRODUCTS" number= {usuariosTotales}/>
+                    <DetailCard type= "verde" title="AMOUNT IN PRODUCTS" number= {amountInProducts}/>
                     <DetailCard type= "amarillo" title="USERS QUANTITY" number= {usuariosTotales}/>
 
 
