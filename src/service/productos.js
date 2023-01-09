@@ -1,8 +1,8 @@
 import { fetchRequest } from "../utils/request"
 
-// const getProducto = (productoId) => {
-
-// }
+export const getLastProduct = async () => {
+    return await fetchRequest("/products/lastProduct")
+}
 
 
 export const getProductos = async () => {

@@ -5,8 +5,6 @@ export const DetailCard = (props) => {
     const colorBorde = props.type == "azul"? "border-left-primary": props.type =="verde"?"border-left-success":"border-left-warning"
 
     return (
-        <div>
-            {/* <!-- Amount of Products in DB --> */}
             <div className="col-md-4 mb-4" >
                 <div className={`card ${colorBorde} shadow h-100 py-2`}>
                     <div className="card-body">
@@ -22,9 +20,5 @@ export const DetailCard = (props) => {
                     </div>
                 </div>
             </div>
-
-
-            
-        </div>
     )
 }
