@@ -1,4 +1,6 @@
 import React from 'react'
+import avatarDummy from '../assets/images/dummy-avatar.jpg'
+
 
 export const Topbar = () => {
     return (
